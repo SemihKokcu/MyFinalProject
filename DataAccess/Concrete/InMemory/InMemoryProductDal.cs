@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,7 +69,12 @@ namespace DataAccess.Concrete.InMemory
             return _products.Where(p => p.CategoryId==categoryId).ToList();
         }
 
-       public void Update(Product product)
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Product product)
         {
             Product productToUptade = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             productToUptade.ProductName = product.ProductName;
