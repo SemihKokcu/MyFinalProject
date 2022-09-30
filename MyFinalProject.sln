@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32414.318
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{3658EAB9-E211-4405-A536-587429BD6274}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{28A59C0E-75C7-4578-97F3-D5036FCFF230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{4FA67F2B-DDAC-4E22-8754-04447E03DFC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{4FA67F2B-DDAC-4E22-8754-04447E03DFC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{945C3DB5-D597-4243-94C5-DE6E5CBCF9BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{4FA67F2B-DDAC-4E22-8754-04447E03DFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA67F2B-DDAC-4E22-8754-04447E03DFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA67F2B-DDAC-4E22-8754-04447E03DFC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{945C3DB5-D597-4243-94C5-DE6E5CBCF9BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{945C3DB5-D597-4243-94C5-DE6E5CBCF9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{945C3DB5-D597-4243-94C5-DE6E5CBCF9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{945C3DB5-D597-4243-94C5-DE6E5CBCF9BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
