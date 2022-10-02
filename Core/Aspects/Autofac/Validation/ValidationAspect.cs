@@ -23,9 +23,9 @@ namespace Core.Aspects.Autofac.Validation
 
             _validatorType = validatorType;
         }
-        protected override void OnBefore(IInvocation invocation)
+        protected override   void OnBefore(IInvocation invocation)
         {
-        // Reflection: çalışma anında birşeyleri çalıştırmayı sağlıyor,
+        // Reflection: çalışma anında validator  çalıştırmayı sağlıyor,
             var validator = (IValidator)Activator.CreateInstance(_validatorType);// generic argumanlarından ilkini alıp parametrelerini buluyor, methodun paramterelerini alıyor
             var entityType = _validatorType.BaseType.GetGenericArguments()[0]; // 0.attribute <Product> gibi burayı al 
             var entities = invocation.Arguments.Where(t => t.GetType() == entityType); // her birini gez ValidationTool kullanarak validate et

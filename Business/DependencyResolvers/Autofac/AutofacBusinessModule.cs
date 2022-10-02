@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
+using Business.CCS;
 using Business.Concrete;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
@@ -22,6 +23,7 @@ namespace Business.DependencyResolvers.Autofac
             //services.singeltona karşılık gelen yer, // singleinstance tek bir instance oluşturur, data tutmayan yapılarda tek bir instance ile hizmet verilebilir
             builder.RegisterType<ProductManager>().As<IProductService>().SingleInstance();
             builder.RegisterType<EfProductDal>().As<IProductDal>().SingleInstance();
+
             //autofac bütün sınıflar için 
            
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();

@@ -9,6 +9,8 @@ namespace Core.Utilities.Interceptors
 {
     public abstract class MethodInterception : MethodInterceptionBaseAttribute
     {
+        //virtual : senin onu ezmeni bekleyene methodlar, sen nerede hangsini ezersen oarada başlar
+        //invocation : business method'larımız
         protected virtual void OnBefore(IInvocation invocation) { }
         protected virtual void OnAfter(IInvocation invocation) { }
         protected virtual void OnException(IInvocation invocation, System.Exception e) { }

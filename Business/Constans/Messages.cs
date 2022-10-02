@@ -14,5 +14,8 @@ namespace Business.Constans
         public static string MaintenanceTime = "Sistem Bakımda";
         public static string ProductsListed = "Ürünler Listelendi";
         public static string ProductsListedByCategoryId = "Ürünler kategoriye göre listelendi";
+        public static string ProductCountOffCategoryError = "Bir kategoride en fazla 10 ürün olabilir";
+        public static string ProductUpdated = "Ürün Güncellendi";
+        public static string ProductNameAlreadyExist = "Böyle bir ürün zaten var";
     }
 }
