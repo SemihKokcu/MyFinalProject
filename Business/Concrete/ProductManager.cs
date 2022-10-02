@@ -22,12 +22,12 @@ namespace Business.Concrete
     public class ProductManager : IProductService
     {
         IProductDal _productDal;
-        ICategoryDal _categoryDal;// soyut sınıftan hangi database ile çalışılacağı seçilir
+        ICategoryService _categoryService;// soyut sınıftan hangi database ile çalışılacağı seçilir
         
-        public ProductManager(IProductDal productDal,ICategoryDal categoryDal)
+        public ProductManager(IProductDal productDal, ICategoryService categoryService)
         {
             _productDal = productDal;
-            _categoryDal = categoryDal;
+            _categoryService = categoryService;
         }
 
 
@@ -35,8 +35,13 @@ namespace Business.Concrete
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
-             IResult result = BusinessRules.Run(CheckIfProductNameExist(product.ProductName),
-                CheckIfProductCountOfCategoryCorrect(product.CategoryId));
+             IResult result = 
+                BusinessRules.Run(
+                    CheckIfProductNameExist(product.ProductName),
+                    CheckIfProductCountOfCategoryCorrect(product.CategoryId),
+                    CheckIfCategoryLimitExceded()
+                    );
+
             if (result !=null)
             {
                 return result;
@@ -109,6 +114,16 @@ namespace Business.Concrete
             }
             return new SuccessResult();
 
+        }
+
+        private IResult CheckIfCategoryLimitExceded()
+        {
+            var result = _categoryService.GetAll().Data.Count;
+            if (result >= 15)
+            {
+                return new ErrorResult(Messages.CategoryCountError);
+            }
+            return new SuccessResult();
         }
     }
 }
