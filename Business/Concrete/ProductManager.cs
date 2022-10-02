@@ -44,15 +44,7 @@ namespace Business.Concrete
             _productDal.Add(product);
             return new SuccessResult(Messages.ProductAdded);
 
-            if (CheckIfProductCountOfCategoryCorrect(product.CategoryId).Success)
-            {
-                if (CheckIfProductNameExist(product.ProductName).Success)
-                {
-                   
-                }
-                
-            }
-            return new ErrorResult();
+           
            
             
 
