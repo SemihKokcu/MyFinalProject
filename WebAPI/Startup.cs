@@ -1,6 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Extensions;
 using Core.IoC;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
@@ -47,7 +50,8 @@ namespace WebAPI
             //services.AddSingleton<IProductDal, EfProductDal>(); // biri senden IProductDal isterse ona EfProductDal ver
             // burada IProductService new için ProductManagerş çalıştırr o da EfProductDal'a bağımlıdır.
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //isteklerin yapılmasından isteğin teslim edilmesine kadar olan süreci takip erden sistem
+            //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -64,8 +68,13 @@ namespace WebAPI
                          IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                      };
                  });
-            ServiceTool.Create(services);// hata aldıktan sorna ekledik null hatası
+            //ServiceTool.Create(services);// hata aldıktan sorna ekledik null hatası
 
+            //farklı her yeni dependecny module için buraya verebiliriz
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

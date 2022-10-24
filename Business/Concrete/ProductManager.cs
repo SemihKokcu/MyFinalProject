@@ -109,7 +109,7 @@ namespace Business.Concrete
         private IResult CheckIfProductNameExist(string productName)
         {
             var result = _productDal.GetAll(p => p.ProductName == productName).Any();
-            if (!result)
+            if (result)
             {
                 return new ErrorResult(Messages.ProductNameAlreadyExist);
             }
