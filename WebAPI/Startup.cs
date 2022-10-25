@@ -52,7 +52,8 @@ namespace WebAPI
 
             //isteklerin yapılmasından isteğin teslim edilmesine kadar olan süreci takip erden sistem
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            
+
+            services.AddCors();
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                  .AddJwtBearer(options =>
@@ -86,6 +87,9 @@ namespace WebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPI v1"));
             }
+
+            //bu adresten gelecek bütün isteklere izin ver diyor
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
